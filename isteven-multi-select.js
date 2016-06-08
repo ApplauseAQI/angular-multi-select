@@ -925,11 +925,6 @@ angular.module( 'isteven-multi-select', ['ng', 'infinite-scroll'] ).directive( '
             $scope.tickProperty     = attrs.tickProperty;
             $scope.directiveId      = attrs.directiveId;
 
-            if (attrs.maxResults) {
-                var maxResults = parseInt(attrs.maxResults, 10);
-                $scope.maxResults = maxResults > 0 ? maxResults : 999999999;
-            }
-
             // Allow overriding the default infinite scroll amount
             if (attrs.infiniteScrollAmount) {
                 var amount = parseInt(attrs.infiniteScrollAmount, 10);
