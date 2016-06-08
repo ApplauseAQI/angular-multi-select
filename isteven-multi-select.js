@@ -642,13 +642,14 @@ angular.module( 'isteven-multi-select', ['ng', 'infinite-scroll'] ).directive( '
                 else {
                     $scope.showCheckboxLayer = true;
 
-                    // Customization: if allow-infinite-scroll attribute is set, will only render N elements to start and progressively add more.  This
-                    // greatly helps performance for large lists.
-                    if (attrs.allowInfiniteScroll === 'true') {
-                        $scope.currentLimit = infiniteScrollAmount;
+                    // Customization: enable infinite scrolling to improve performance with large lists.  Enabled by default, can be disabled
+                    // by setting allow-infinite-scroll="false".  Note that you still must use the infinite-scroll directive and limitTo filter
+                    // in the template for this to do anything.
+                    if (attrs.allowInfiniteScroll === 'false') {
+                        $scope.currentLimit = $scope.inputModel.length;
                     }
                     else {
-                        $scope.currentLimit = $scope.inputModel.length;
+                        $scope.currentLimit = infiniteScrollAmount;
                     }
 
                     // clear filter
