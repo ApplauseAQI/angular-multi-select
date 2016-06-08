@@ -33,7 +33,7 @@
 
 'use strict'
 
-angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect' , [ '$sce', '$timeout', '$templateCache', function ( $sce, $timeout, $templateCache ) {
+angular.module( 'isteven-multi-select', ['ng', 'infinite-scroll'] ).directive( 'istevenMultiSelect' , [ '$sce', '$timeout', '$templateCache', function ( $sce, $timeout, $templateCache ) {
     return {
         restrict:
           'AE',
@@ -644,15 +644,12 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
 
                     // Customization: if allow-infinite-scroll attribute is set, will only render N elements to start and progressively add more.  This
                     // greatly helps performance for large lists.
-                    // NOTE: if you are using infinite scroll, you'll need to add the ngInfiniteScroll package to your project for it to work.
                     if (attrs.allowInfiniteScroll === 'true') {
                         $scope.currentLimit = infiniteScrollAmount;
                     }
                     else {
                         $scope.currentLimit = $scope.inputModel.length;
                     }
-
-                    $scope.currentResultCount = $scope.maxResults;
 
                     // clear filter
                     $scope.inputLabel.labelFilter = '';
@@ -881,11 +878,6 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
                         }
                     }
                 }
-                // Enter key - cancel event so it doesn't submit if this is inside a form
-                else if ( key === 13 ) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                }
 
                 if ( isNavigationKey === true ) {
 
@@ -917,10 +909,6 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
             // remove CSS style on selected row
             $scope.removeFocusStyle = function( tabIndex ) {
                 angular.element( formElements[ tabIndex ] ).parent().parent().parent().removeClass( 'multiSelectFocus' );
-            }
-
-            $scope.showMore = function() {
-                $scope.currentResultCount += $scope.maxResults;
             }
 
             /*********************
