@@ -554,7 +554,7 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
                             $scope.varButtonLabel += ', ... ';
                         }
 
-                        // JR: collapse to All when everything is selected and more than maxLabels values are shown
+                        // Collapse to 'All' when everything is selected and more than maxLabels values are shown
                         if ($scope.outputModel.length === $scope.inputModel.length) {
                             $scope.varButtonLabel = 'All ';
                         }
@@ -644,6 +644,7 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
 
                     // Customization: if allow-infinite-scroll attribute is set, will only render N elements to start and progressively add more.  This
                     // greatly helps performance for large lists.
+                    // NOTE: if you are using infinite scroll, you'll need to add the ngInfiniteScroll package to your project for it to work.
                     if (attrs.allowInfiniteScroll === 'true') {
                         $scope.currentLimit = infiniteScrollAmount;
                     }
