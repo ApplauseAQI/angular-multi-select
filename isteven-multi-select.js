@@ -582,7 +582,7 @@ angular.module( 'isteven-multi-select', ['ng', 'infinite-scroll'] ).directive( '
                     }
 
                 }
-                $scope.varButtonLabel = $sce.trustAsHtml( $scope.varButtonLabel + '<span class="caret"></span>' );
+                $scope.varButtonLabel = $scope.varButtonLabel + '<span class="caret"></span>';
             }
 
             // Check if a checkbox is disabled or enabled. It will check the granular control (disableProperty) and global control (isDisabled)
@@ -624,7 +624,7 @@ angular.module( 'isteven-multi-select', ['ng', 'infinite-scroll'] ).directive( '
                 if ( type.toUpperCase() === 'BUTTONLABEL' ) {
                     return label;
                 }
-                return $sce.trustAsHtml( label );
+                return label;
             }
 
             // UI operations to show/hide checkboxes based on click event..
