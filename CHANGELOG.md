@@ -1,3 +1,9 @@
+### v4.0.2
+- Fix XSS vulnerability when rendering user provided selections
+
+### v4.0.1
+- Refresh after select all
+
 ### v4.0.0
 ##### Added / Updated
 - You can now customize output-model properties that you need, instead of having all data.
